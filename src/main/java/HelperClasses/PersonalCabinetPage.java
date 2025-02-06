@@ -9,6 +9,13 @@ public class PersonalCabinetPage extends BasePage {
     }
 
     public void logout() {
-        driver.findElement(By.xpath("//button[text()='Выйти']")).click();
+        driver.findElement(By.xpath("//button[text()='Выход']")).click();
+    }
+    public void goToConstructor() {
+        driver.findElement(By.xpath("//p[text()='Конструктор']")).click();
+    }
+
+    public void goToLogo() {
+        driver.findElement(By.xpath("//div[@class='AppHeader_header__logo__2D0X2']/a")).click();
     }
 }
