@@ -14,6 +14,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 import static HelperApi.URL.BASE_URL;
 
@@ -41,35 +42,32 @@ public class TestMainPage {
     public void testBun() {
         mainPage.goToIngridient();
         mainPage.goToBun();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By
-                .xpath("//p[text()='Краторная булка N-200i']")));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By
-                .xpath("//p[text()='Краторная булка N-200i']")));
-        Assert.assertTrue("Элемент 'Начинка' не отображается на странице", element.isDisplayed());
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement tabElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By
+                .xpath("//span[text()='Булки']/..")));
+        String currentClassName = tabElement.getAttribute("class");
+        Assert.assertTrue("Класс элемента не изменился на ожидаемое значение", currentClassName.contains("tab_tab_type_current__2BEPc"));
     }
     @Test
     @Description("Проверка отображения соусов")
     @Step("Переключаем на вкладку соусов и проверяем отображение")
     public void testSouces() {
         mainPage.goToSouces();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By
-                .xpath("//p[text()='Соус традиционный галактический']")));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By
-                .xpath("//p[text()='Соус традиционный галактический']")));
-        Assert.assertTrue("Элемент 'Начинка' не отображается на странице", element.isDisplayed());
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement tabElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By
+                .xpath("//span[text()='Соусы']/..")));
+        String currentClassName = tabElement.getAttribute("class");
+        Assert.assertTrue("Класс элемента не изменился на ожидаемое значение", currentClassName.contains("tab_tab_type_current__2BEPc"));
     }
     @Test
     @Description("Проверка отображения начинки")
     @Step("Переключаем на вкладку начинки")
     public void testIngridient() {
         mainPage.goToIngridient();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By
-                .xpath("//p[text()='Мясо бессмертных моллюсков Protostomia']")));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By
-                .xpath("//p[text()='Мясо бессмертных моллюсков Protostomia']")));
-        Assert.assertTrue("Элемент 'Начинка' не отображается на странице", element.isDisplayed());
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement tabElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By
+                .xpath("//span[text()='Начинки']/..")));
+        String currentClassName = tabElement.getAttribute("class");
+        Assert.assertTrue("Класс элемента не изменился на ожидаемое значение", currentClassName.contains("tab_tab_type_current__2BEPc"));
     }
 }

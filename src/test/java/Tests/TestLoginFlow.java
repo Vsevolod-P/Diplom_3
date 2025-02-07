@@ -1,6 +1,5 @@
 package Tests;
 
-import HelperApi.URL;
 import HelperClasses.LoginPage;
 import HelperClasses.MainPage;
 import HelperClasses.RegistrationPage;
